@@ -48,7 +48,7 @@ const handleClick = () => {
         <h1 className='text-gray-100 text-2xl'>Won : <span className='text-green-200 text-xl'>{wonScore}</span></h1>
         <h1 className='text-gray-100 text-2xl'>Lost : <span className='text-red-200 text-xl'>{lostScore}</span></h1>
       </div>
-    <div className='flex flex-wrap items-center justify-center lg:min-h-[70vh] sm:py-10 sm:px-40 max-sm:py-5 h-1/2 gap-8'>
+    <div className='flex flex-wrap items-center justify-center lg:min-h-[70vh] sm:py-10 sm:px-36 max-sm:py-5 h-1/2 gap-8'>
       {array.map((idx,i)=>(
         <Card key={i} type={idx} count={count} setCount={setCount} reset={reset} setReset={setReset} canDiffuse={canDiffuse} setCanDiffuse={setCanDiffuse} setWonScore={setWonScore} setLostScore={setLostScore}/>
       ))}
