@@ -7,8 +7,8 @@ const Home = () => {
   const [wonScore, setWonScore] = useState(0)
   const [lostScore, setLostScore] = useState(0)
 
-  // let cardArray = ["cat", "diffuse", "cat", "bomb", "shuffle"]
-  let cardArray = ["cat", "diffuse", "cat", "bomb", "cat"]
+  let cardArray = ["cat", "diffuse", "cat", "bomb", "shuffle", "cat"]
+  // let cardArray = ["cat", "diffuse", "cat", "bomb", "cat"]
 
   const [array, setArray] = useState(cardArray);
   const [reset, setReset] = useState(true);
@@ -29,7 +29,7 @@ const Home = () => {
 }
 
 useEffect(() => {
-  cardArray = getRandomUniqueElements(cardArray, 5);
+  cardArray = getRandomUniqueElements(cardArray, 6);
   setArray(cardArray)
 }, [count])
 
