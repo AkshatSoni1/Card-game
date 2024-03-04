@@ -18,11 +18,11 @@ const Card = (props) => {
       setCanDiffuse(false)
     }, [count])
     
-    const removeCard = () => {
-        setTimeout(() => {
-            setRemAfterTimeout(true)
-        }, 600);
-    }
+    // const removeCard = () => {
+    //     setTimeout(() => {
+    //         setRemAfterTimeout(true)
+    //     }, 600);
+    // }
 
     const reshuffleCards = (time) => {
         setTimeout(() => {
@@ -43,13 +43,14 @@ const Card = (props) => {
         if((type === 'cat') ||  (canDiffuse && type === 'bomb'))
         {
             if((canDiffuse && type === 'bomb')){
-                removeCard()
+                // removeCard()
                 reshuffleCards(1500)
                 setWonScore((wn)=> wn+1)
                 toast.success('You have won the game!')
-            }else{
-                removeCard()
             }
+            // else{
+            //     removeCard()
+            // }
             console.log("Removing...", type)
         }
         setReset(false)
