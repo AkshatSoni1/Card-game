@@ -8,7 +8,7 @@ import { FaTools } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const Card = (props) => {
-    const {type,count, setCount ,reset, setReset, canDiffuse, setCanDiffuse, setWonScore, setLostScore} = props;
+    const {type,count, setCount ,reset, setReset, canDiffuse, setCanDiffuse, setWonScore, setLostScore, canTouch, setCanTouch} = props;
     const [toggle, setToggle] = useState(true)
     const [remAfterTimeout, setRemAfterTimeout] = useState(false)
 
@@ -16,6 +16,7 @@ const Card = (props) => {
       setToggle(true)
       setRemAfterTimeout(false)
       setCanDiffuse(false)
+      setCanTouch(true)
     }, [count])
     
     // const removeCard = () => {
@@ -27,37 +28,42 @@ const Card = (props) => {
     const reshuffleCards = (time) => {
         setTimeout(() => {
             setCount((cnt)=> cnt+1)
+            setCanTouch(true)
         }, time);
     }
 
     const handleClick = () => {
-        if(type === 'diffuse'){
-            setCanDiffuse(true)
-        }
-        if(type === 'bomb' && !canDiffuse){
-            reshuffleCards(1500)
-            setLostScore((ls)=> ls+1)
-            toast.error('Boom! you have lost the game')
-        }
-        // if(type === 'cat' )
-        if((type === 'cat') ||  (canDiffuse && type === 'bomb'))
-        {
-            if((canDiffuse && type === 'bomb')){
-                // removeCard()
-                reshuffleCards(1500)
-                setWonScore((wn)=> wn+1)
-                toast.success('You have won the game!')
+        if(canTouch){ //new addition
+            if(type === 'diffuse'){
+                setCanDiffuse(true)
             }
-            // else{
-            //     removeCard()
-            // }
-            console.log("Removing...", type)
-        }
-        setReset(false)
-        setToggle(false)
-        setRemAfterTimeout(false);
-        if(type === 'shuffle'){
-            reshuffleCards(500)
+            if(type === 'bomb' && !canDiffuse){
+                reshuffleCards(1500)
+                setLostScore((ls)=> ls+1)
+                toast.error('Boom! you have lost the game')
+                setCanTouch(false)
+            }
+            // if(type === 'cat' )
+            if((type === 'cat') ||  (canDiffuse && type === 'bomb'))
+            {
+                if((canDiffuse && type === 'bomb')){
+                    // removeCard()
+                    reshuffleCards(1500)
+                    setWonScore((wn)=> wn+1)
+                    toast.success('You have won the game!')
+                    setCanTouch(false)
+                }
+                // else{
+                //     removeCard()
+                // }
+                console.log("Removing...", type)
+            }
+            setReset(false)
+            setToggle(false)
+            setRemAfterTimeout(false);
+            if(type === 'shuffle'){
+                reshuffleCards(500)
+            }
         }
     }
   return (

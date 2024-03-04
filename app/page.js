@@ -6,6 +6,7 @@ const Home = () => {
   const [count, setCount] = useState(0)
   const [wonScore, setWonScore] = useState(0)
   const [lostScore, setLostScore] = useState(0)
+  const [canTouch, setCanTouch] = useState(true); //new addition
 
   let cardArray = ["cat", "diffuse", "cat", "bomb", "shuffle", "cat"]
   // let cardArray = ["cat", "diffuse", "cat", "bomb", "cat"]
@@ -50,7 +51,7 @@ const handleClick = () => {
       </div>
     <div className='flex flex-wrap items-center justify-center lg:min-h-[70vh] sm:p-10 max-sm:py-5 h-1/2 gap-8'>
       {array.map((idx,i)=>(
-        <Card key={i} type={idx} count={count} setCount={setCount} reset={reset} setReset={setReset} canDiffuse={canDiffuse} setCanDiffuse={setCanDiffuse} setWonScore={setWonScore} setLostScore={setLostScore}/>
+        <Card key={i} type={idx} count={count} setCount={setCount} reset={reset} setReset={setReset} canDiffuse={canDiffuse} setCanDiffuse={setCanDiffuse} setWonScore={setWonScore} setLostScore={setLostScore} canTouch={canTouch} setCanTouch={setCanTouch}/>
       ))}
     </div>
       <div onClick={handleClick} className="text-gray-100 w-fit text-center border-2 border-t-purple-400 border-s-purple-400 border-b-pink-400 border-r-pink-400 border-white px-5 py-4 font-semibold rounded-xl hover:text-zinc-900 hover:bg-gradient-to-br hover:from-purple-400 hover:to-pink-400 cursor-pointer m-4">
